@@ -1,0 +1,35 @@
+Language learning app with Mymemory api
+-select langauge, have units with different type of prhases programed
+ in, give text in either english or target language, 
+ask to translate it, show result and ask if right, 
+since there will be nuances.
+
+
+Allow going on to more difficult lessons once easier ones are completed.
+
+
+
+Project Proposal - MyLanguageLearner
+-This will use node.js, react.
+-It will be both backend and frontend even split
+-It will be a website
+-This website will be for english language speakers looking to learn another language, or at least the basics
+-People about to travel wanting to get some travel words and phrases, and basic language learners
+-MyMemory API
+
+A) Creating this project, will consist of a database schema with users, their target languages, and progress of each unit.
+B) Some issues with the api is it being a translator, sometimes the translations won't be perfect, it will ask the user if they were right if it comes back with an incorrect answer
+C) No sensitive information to secure other than users' passwords
+D) functionality:
+	a) Select language to learn, users can have mulitple
+	b) learn basic words and then phrases by category in app
+	c) track progress
+	d) give exp
+E) user flow will look like:
+	a) user signs up
+	b) selects first target language
+	c) starts learning
+	d) progresses through, and can add other languages
+f) This is more than a crud app because it allows language learning, grants experience for playing, and has restricted access based on unit and language
+Stretch goals are getting it passed basic words and phrases.
+

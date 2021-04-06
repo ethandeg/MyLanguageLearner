@@ -33,3 +33,8 @@ E) user flow will look like:
 f) This is more than a crud app because it allows language learning, grants experience for playing, and has restricted access based on unit and language
 Stretch goals are getting it passed basic words and phrases.
 
+
+
+
+
+

@@ -1,5 +1,4 @@
--create a route that accepts either parameters or body for query and language
-    --call api for translation, return translation
+
 
 --Create 6 units of words
     -each unit has 3 sub units

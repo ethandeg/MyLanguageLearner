@@ -3,15 +3,25 @@ const cors = require("cors")
 
 const app = express()
 const translatePhrase = require("./MyMemoryAPI")
+const lessonRoutes = require("./routes/lessons");
+const userRoutes = require("./routes/users")
+const db = require("./db");
 app.use(express.json())
 app.use(cors())
 
+app.use("/lesson", lessonRoutes)
+app.use("/user", userRoutes)
 
 app.get("/", async(req, res, next) => {
     const {q, lang} = req.query;
     let call = await translatePhrase(q, lang)
     res.json(call)
-})
+});
+
+
+
+
+
 
 
 app.use(function (err, req, res, next) {

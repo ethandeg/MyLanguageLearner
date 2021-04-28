@@ -42,9 +42,16 @@ Create Table user_lessons (
     lesson_id INTEGER REFERENCES lessons ON DELETE CASCADE
 );
 
+Create Table decks (
+    id SERIAL PRIMARY KEY,
+    username text REFERENCES users ON DELETE CASCADE,
+    name VARCHAR(35)
+
+);
+
 Create Table flashcards (
     id SERIAL PRIMARY KEY,
-    username VARCHAR(25) REFERENCES users ON DELETE CASCADE,
+    deck_id INTEGER REFERENCES decks ON DELETE CASCADE,
     front_side TEXT NOT NULL,
     back_side TEXT NOT NULL
 );

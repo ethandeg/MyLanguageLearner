@@ -73,12 +73,18 @@ VALUES
  ('cooluser', 'ja', 1),
  ('cooluser', 'ja', 6);
 
+INSERT INTO decks 
+(username, name)
+VALUES 
+('testuser', 'unit 1'),
+('russianlearner', 'russian flash cards'),
+('cooluser', 'japanese deck'); 
 
  INSERT INTO flashcards
- (username, front_side, back_side)
+ (deck_id, front_side, back_side)
 VALUES
-('testuser', 'something English', 'something italian'),
-('testuser', 'something english', 'something spanish'),
-('russianlearner', 'something english', 'something russian'),
-('cooluser', 'something english', 'something japanese'),
-('cooluser', 'something english', 'something japanese again');
+(1, 'something English', 'something italian'),
+(1, 'something english', 'something spanish'),
+(2, 'something english', 'something russian'),
+(3, 'something english', 'something japanese'),
+(3, 'something english', 'something japanese again');

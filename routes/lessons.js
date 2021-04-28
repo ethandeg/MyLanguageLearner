@@ -8,8 +8,7 @@ router.get("/", async(req, res, next) => {
 try{
     const {lang, subUnit} = req.query;
     const material = await Lesson.getLessonsFromSubUnit(subUnit)
-    console.log(material)
-    let response = []
+    const response = []
     for(row of material) {
       const contents = await translatePhrase(row.material, lang)
       response.push(contents)

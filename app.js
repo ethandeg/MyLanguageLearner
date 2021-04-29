@@ -5,17 +5,19 @@ const app = express()
 const translatePhrase = require("./MyMemoryAPI")
 const lessonRoutes = require("./routes/lessons");
 const userRoutes = require("./routes/users")
+const languageRoutes = require("./routes/languages")
 const db = require("./db");
 app.use(express.json())
 app.use(cors())
 
 app.use("/lesson", lessonRoutes)
 app.use("/user", userRoutes)
+app.use("/language", languageRoutes)
 
-app.get("/", async(req, res, next) => {
-    const {q, lang} = req.query;
-    let call = await translatePhrase(q, lang)
-    res.json(call)
+app.get("/", async (req, res, next) => {
+  const { q, lang } = req.query;
+  let call = await translatePhrase(q, lang)
+  res.json(call)
 });
 
 
@@ -33,6 +35,6 @@ app.use(function (err, req, res, next) {
     error: { message, status },
   });
 });
-  
-  
-  module.exports = app;
+
+
+module.exports = app;

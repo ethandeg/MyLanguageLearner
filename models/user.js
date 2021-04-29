@@ -15,7 +15,7 @@ class User {
         const languages = await db.query(`
             SELECT language_code AS code, name, json_agg(lesson_id) AS lessons
             FROM user_lessons JOIN languages ON user_lessons.language_code = languages.code
-            WHERE username = $1 GROUP BY language_code, languages.name;
+            WHERE username = $1 GROUP BY language_code, languages.name
 
             `, [username])
 

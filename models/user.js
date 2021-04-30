@@ -26,6 +26,40 @@ class User {
 
         return { ...result.rows[0], languages: languages.rows, deck: deck.rows }
     }
+
+    static async getAllUsers() {
+        const result = await db.query(`
+            SELECT username, experience, profile_pic AS profilePic
+            FROM users;
+        `)
+
+        if (!result.rows.length) throw new BadRequestError
+        return result.rows
+    }
+
+    static async newLearner(username, langCode) {
+        const result = await db.query(
+            `INSERT INTO user_language
+            (username, language_code)
+            VALUES
+            ($1, $2)
+            RETURNING username, language_code AS languageCode`,
+            [username, langCode])
+
+        if (!result.rows.length) throw BadRequestError
+        return result.rows[0]
+    }
+
+    static async quitLearning(username, langCode) {
+        const result = await db.query(
+            `DELETE FROM user_language
+            WHERE username=$1 AND
+            language_code=$2
+            `, [username, langCode]
+        )
+
+        return result
+    }
 }
 //SAMPLE SELECTING EVERYTHING W/O ARRAY_AGG
 

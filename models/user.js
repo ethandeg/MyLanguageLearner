@@ -1,6 +1,7 @@
 const db = require("../db")
 const { BadRequestError } = require("../expressError")
-
+const bcrypt = require("bcrypt")
+const { BCRYPT_WORK_FACTOR } = require("../config")
 class User {
     //JSON_BUILD_OBJECT to nest
     //https://stackoverflow.com/questions/42222968/create-nested-json-from-sql-query-postgres-9-4
@@ -59,6 +60,37 @@ class User {
         )
 
         return result
+    }
+
+
+    static async register(username, password) {
+
+        const duplicateCheck = await db.query(`SELECT username FROM users WHERE username=$1`, [username])
+        if (duplicateCheck.rows[0]) throw new BadRequestError(`Duplicate username: ${username}`)
+        const hashedPassword = await bcrypt.hash(password, BCRYPT_WORK_FACTOR)
+        const result = await db.query(
+            `INSERT INTO users (username, password)
+            VALUES ($1, $2) RETURNING username`, [username, hashedPassword]
+        )
+
+        return result.rows[0]
+    }
+
+    static async authenticate(username, password) {
+        const result = await db.query(
+            `SELECT username, password FROM users
+            WHERE username=$1`, [username]
+        )
+        const user = result.rows[0]
+        if (user) {
+            const isValid = await bcrypt.compare(password, user.password)
+            if (isValid) {
+                delete user.password;
+                return user
+            }
+
+        }
+        throw new BadRequestError("Username/password is invalid")
     }
 }
 //SAMPLE SELECTING EVERYTHING W/O ARRAY_AGG

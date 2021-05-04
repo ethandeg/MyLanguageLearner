@@ -20,7 +20,7 @@ class FlashCard {
             `INSERT INTO flashcards (deck_id, front_side, back_side)
             VALUES 
             ($1, $2, $3)
-            RETURNING *`, [deckId, front, back]
+            RETURNING deck_id AS "deckId", front_side AS "frontSide", back_side AS "backSide", id`, [deckId, front, back]
         )
 
         if (!results.rows[0]) throw new BadRequestError;

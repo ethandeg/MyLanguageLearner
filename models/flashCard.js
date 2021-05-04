@@ -3,7 +3,7 @@ const { BadRequestError } = require("../expressError")
 class FlashCard {
 
     static async getByDeckId(id) {
-        const results = await db.query(`SELECT * FROM flashcards WHERE deck_id = $1`, [id])
+        const results = await db.query(`SELECT id, deck_id AS "deckId", front_side AS "frontSide", back_side AS "backSide" FROM flashcards WHERE deck_id = $1`, [id])
         return results.rows
     }
 

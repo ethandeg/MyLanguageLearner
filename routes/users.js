@@ -28,6 +28,7 @@ router.post("/language/new", async (req, res, next) => {
 router.delete("/language/remove", async (req, res, next) => {
   try {
     const { username, languageCode } = req.body;
+
     await User.quitLearning(username, languageCode)
     return res.json({ msg: 'deleted' })
   } catch (e) {

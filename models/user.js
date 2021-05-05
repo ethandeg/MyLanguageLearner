@@ -9,16 +9,18 @@ class User {
 
 
         const result = await db.query(`
-                SELECT username, experience, profile_pic AS profilePic 
+                SELECT username, experience, profile_pic AS "profilePic" 
                 FROM users WHERE username=$1
             `, [username])
         if (!result.rows.length) throw new BadRequestError
         const languages = await db.query(`
-            SELECT language_code AS code, name, json_agg(lesson_id) AS lessons
-            FROM user_lessons JOIN languages ON user_lessons.language_code = languages.code
-            WHERE username = $1 GROUP BY language_code, languages.name
+        SELECT language_code AS "languageCode", name FROM user_language JOIN languages
+        ON user_language.language_code = languages.code WHERE username=$1;
+       
 
             `, [username])
+
+            console.log(languages)
 
         const deck = await db.query(`
                         SELECT id, name FROM decks WHERE username =$1 
@@ -44,7 +46,7 @@ class User {
             (username, language_code)
             VALUES
             ($1, $2)
-            RETURNING username, language_code AS languageCode`,
+            RETURNING username, language_code AS "languageCode"`,
             [username, langCode])
 
         if (!result.rows.length) throw BadRequestError

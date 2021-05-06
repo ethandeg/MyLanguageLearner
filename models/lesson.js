@@ -38,6 +38,28 @@ class Lesson {
         if(!response.rows.length) throw new BadRequestError
         return "success"
     }
+
+    static async getUnitsAndSubunits(){
+        const response = await db.query(
+            `SELECT u.unit_name AS "unitName", u.unit_number AS "unitNumber", u.id,
+            json_agg(subunits.id) AS "subUnits" FROM units AS u
+            JOIN subunits ON subunits.unit_number = u.unit_number GROUP BY
+            u.unit_name, u.unit_number, u.id ORDER BY u.unit_number
+            `
+        )
+
+        return response.rows
+    }
+
+    static async getCompletedLessons(lang, username){
+        const response = await db.query(
+            `SELECT language_code AS "languageCode", json_agg(lesson_id) AS "lessonId"
+            FROM user_lessons WHERE language_code=$1
+            AND username=$2 GROUP BY language_code`, [lang, username]
+        )
+        return response.rows[0]
+    }
+
 }
 
 

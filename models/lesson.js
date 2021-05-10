@@ -57,6 +57,7 @@ class Lesson {
             FROM user_lessons WHERE language_code=$1
             AND username=$2 GROUP BY language_code`, [lang, username]
         )
+        if(!response.rows.length) return {languageCode: lang, lessonId: []}
         return response.rows[0]
     }
 

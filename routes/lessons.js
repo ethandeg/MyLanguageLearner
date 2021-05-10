@@ -58,15 +58,23 @@ router.get("/translate", async (req, res, next) => {
         //narrow down res from api to just segment, translation, looks like pulling english results still?
         const { languageCode, subUnit } = req.query;
         const material = await Lesson.getLessonsFromSubUnit(subUnit)
-        const response = []
+        const promises = []
         for (row of material) {
-            const contents = await translatePhrase(row.material, languageCode)
+            const contents = translatePhrase(row.material, languageCode)
             //promise.all => array of promises
             //push each promise from api call to an array
-            response.push(contents)
+            promises.push(contents)
         }
         //call promise.all to the promises array
-        return res.json(response)
+        Promise.all(promises).then(values => {
+            // const response = values.map((val,i ) => {
+            //     return {segment: val[i].segment, translation: val[i].translation}
+            // })
+            // console.log(response)
+            console.log(values.length)
+            return res.json(values)
+        })
+     
     } catch (e) {
         return next(e)
     }

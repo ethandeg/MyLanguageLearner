@@ -71,7 +71,7 @@ router.get("/translate", async (req, res, next) => {
             //     return {segment: val[i].segment, translation: val[i].translation}
             // })
             // console.log(response)
-            console.log(values.length)
+
             return res.json(values)
         })
      

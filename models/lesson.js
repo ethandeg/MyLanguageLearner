@@ -9,7 +9,6 @@ class Lesson {
 
     static async getLessonsFromSubUnit(subNum){
         const lessons = await db.query(`SELECT * FROM lessons WHERE subunit_number = $1`,[subNum])
-        if(!lessons.rows.length) throw new NotFoundError;
         const result = lessons.rows.map(lesson => new Lesson(lesson.id, lesson.subunit_number, lesson.material))
         return result
 

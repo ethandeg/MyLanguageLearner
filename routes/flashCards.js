@@ -1,4 +1,5 @@
 const express = require("express");
+const db = require("../db");
 const router = new express.Router()
 const FlashCard = require("../models/flashCard")
 
@@ -25,6 +26,26 @@ router.post("/deck/new", async (req, res, next) => {
 
 })
 
+router.patch("/deck", async(req, res, next) => {
+    try {
+        const {id, name} = req.body;
+        const result = await FlashCard.editDeck(id, name)
+        return res.json(result)
+    } catch(e){
+        return next(e)
+    }
+})
+
+router.delete("/deck", async(req, res,next) => {
+    try {
+        const {id} = req.body;
+        await FlashCard.deleteDeck(id)
+        return res.json({msg: "deleted"})
+    } catch(e){
+        return next(e)
+    }
+})
+
 router.get("/deck/:deck_id", async (req, res, next) => {
     try {
         const { deck_id } = req.params;
@@ -34,6 +55,27 @@ router.get("/deck/:deck_id", async (req, res, next) => {
         return next(e)
     }
 });
+
+router.patch("/", async (req, res , next) => {
+    try {
+        const {id, frontSide, backSide} = req.body;
+        const results = await FlashCard.editFlashCard(id, frontSide,backSide)
+        return res.json(results)
+    } catch(e){
+        return next(e)
+    }
+
+})
+
+router.delete("/", async (req, res, next) => {
+    try {
+        const {id} = req.body
+        await FlashCard.deleteFlashCard(id)
+        return res.json({msg: "deleted"})
+    } catch(e){
+        return next(e)
+    }
+})
 
 
 

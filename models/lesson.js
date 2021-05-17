@@ -20,7 +20,7 @@ class Lesson {
                                         VALUES
                                         ($1, $2, $3)
                                         RETURNING
-                                        username, language_code, lesson_id`
+                                        username, language_code AS "languageCode", lesson_id AS "lessonId"`
                                         ,[username, language_code, lesson_id])
         if(!response.rows.length) throw new BadRequestError
         return response.rows[0] 

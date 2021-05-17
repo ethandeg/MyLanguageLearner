@@ -94,6 +94,17 @@ class User {
         }
         throw new BadRequestError("Username/password is invalid")
     }
+
+    static async earnExperience(username, amount){
+        const result = await db.query(
+            `UPDATE users
+            SET experience = experience + $2
+            WHERE username=$1 
+            RETURNING username, experience`, [username, amount]
+        )
+        if(!result.rows.length) throw new BadRequestError;
+        return result.rows[0]
+    }
 }
 //SAMPLE SELECTING EVERYTHING W/O ARRAY_AGG
 

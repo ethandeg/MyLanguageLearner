@@ -39,8 +39,8 @@ router.patch("/deck", async(req, res, next) => {
 router.delete("/deck", async(req, res,next) => {
     try {
         const {id} = req.body;
-        await FlashCard.deleteDeck(id)
-        return res.json({msg: "deleted"})
+        const result = await FlashCard.deleteDeck(id)
+        return res.json(result)
     } catch(e){
         return next(e)
     }

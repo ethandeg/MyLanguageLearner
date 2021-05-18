@@ -32,7 +32,7 @@ class FlashCard {
             `UPDATE flashcards
             SET front_side = $2, back_side=$3
             WHERE id = $1
-            RETURNING *`, [id, frontSide, backSide]
+            RETURNING id, deck_id AS "deckId", front_side AS "frontSide", back_side AS "backSide"`, [id, frontSide, backSide]
         )
         if(!results.rows[0]) throw new BadRequestError
         return results.rows[0]

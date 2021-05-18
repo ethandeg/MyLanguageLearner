@@ -70,8 +70,8 @@ router.patch("/", async (req, res , next) => {
 router.delete("/", async (req, res, next) => {
     try {
         const {id} = req.body
-        await FlashCard.deleteFlashCard(id)
-        return res.json({msg: "deleted"})
+        const result = await FlashCard.deleteFlashCard(id)
+        return res.json(result)
     } catch(e){
         return next(e)
     }

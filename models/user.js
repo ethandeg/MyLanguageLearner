@@ -1,7 +1,10 @@
 const db = require("../db")
-const { BadRequestError } = require("../expressError")
+const { BadRequestError, NotFoundError } = require("../expressError")
 const bcrypt = require("bcrypt")
 const { BCRYPT_WORK_FACTOR } = require("../config")
+const { sqlForPartialUpdate } = require("../helpers/sql")
+const { user } = require("../db")
+
 class User {
     //JSON_BUILD_OBJECT to nest
     //https://stackoverflow.com/questions/42222968/create-nested-json-from-sql-query-postgres-9-4
@@ -20,7 +23,7 @@ class User {
 
             `, [username])
 
-            console.log(languages)
+        console.log(languages)
 
         const deck = await db.query(`
                         SELECT id, name FROM decks WHERE username =$1 
@@ -95,16 +98,67 @@ class User {
         throw new BadRequestError("Username/password is invalid")
     }
 
-    static async earnExperience(username, amount){
+    static async earnExperience(username, amount) {
         const result = await db.query(
             `UPDATE users
             SET experience = experience + $2
             WHERE username=$1 
             RETURNING username, experience`, [username, amount]
         )
-        if(!result.rows.length) throw new BadRequestError;
+        if (!result.rows.length) throw new BadRequestError;
         return result.rows[0]
     }
+
+    static async editUser(username, data) {
+        if (data.password) {
+            data.password = await bcrypt.hash(data.password, BCRYPT_WORK_FACTOR)
+        }
+        const { setCols, values } = sqlForPartialUpdate(data)
+        const usernameVarIdx = `$${values.length + 1}`
+        const querySql =
+            `UPDATE users
+            SET ${setCols}
+            WHERE username = ${usernameVarIdx}
+            RETURNING 
+            username, profile_pic AS "profilePic", experience`
+
+
+        const result = await db.query(querySql, [...values, username])
+        if (!result.rows[0]) throw new NotFoundError(`No user ${username}`)
+        delete user.password
+        return result.rows[0]
+    }
+
+    // static async update(username, data) {
+    //     if (data.password) {
+    //       data.password = await bcrypt.hash(data.password, BCRYPT_WORK_FACTOR);
+    //     }
+
+    //     const { setCols, values } = sqlForPartialUpdate(
+    //       data,
+    //       {
+    //         firstName: "first_name",
+    //         lastName: "last_name",
+    //         isAdmin: "is_admin",
+    //       });
+    //     const usernameVarIdx = "$" + (values.length + 1);
+
+    //     const querySql = `UPDATE users 
+    //                       SET ${setCols} 
+    //                       WHERE username = ${usernameVarIdx} 
+    //                       RETURNING username,
+    //                                 first_name AS "firstName",
+    //                                 last_name AS "lastName",
+    //                                 email,
+    //                                 is_admin AS "isAdmin"`;
+    //     const result = await db.query(querySql, [...values, username]);
+    //     const user = result.rows[0];
+
+    //     if (!user) throw new NotFoundError(`No user: ${username}`);
+
+    //     delete user.password;
+    //     return user;
+    //   }
 }
 //SAMPLE SELECTING EVERYTHING W/O ARRAY_AGG
 

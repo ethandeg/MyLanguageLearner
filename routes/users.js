@@ -47,12 +47,22 @@ router.get("/:username", async (req, res, next) => {
 
 })
 
-router.post("/experience", async (req,res,next) => {
+router.patch("/:username", async (req, res, next) => {
   try {
-    const {username, experience} = req.body;
+    const { username } = req.params
+    const results = await User.editUser(username, req.body)
+    return res.json(results)
+  } catch (e) {
+    return next(e)
+  }
+})
+
+router.post("/experience", async (req, res, next) => {
+  try {
+    const { username, experience } = req.body;
     const results = await User.earnExperience(username, experience)
     return res.json(results)
-  } catch(e){
+  } catch (e) {
     return next(e)
   }
 })

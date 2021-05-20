@@ -29,6 +29,19 @@ router.post("/register", async (req, res, next) => {
 
 })
 
+router.patch("/", async (req, res, next) => {
+    try {
+        const { username, oldPassword, newPassword } = req.body
+        await User.authenticate(username, oldPassword)
+        await User.editUser(username, { password: newPassword })
+        return res.json({ msg: "success" })
+
+    } catch (e) {
+        return next(e)
+    }
+
+})
+
 
 
 module.exports = router

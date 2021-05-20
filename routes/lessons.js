@@ -2,12 +2,14 @@ const express = require("express");
 const router = new express.Router()
 const translatePhrase = require("../MyMemoryAPI")
 const Lesson = require("../models/lesson")
-
+const schemaCheck = require("../helpers/schemaCheck")
+const lessonCompleteSchema = require("../schemas/lessonCompleteSchema.json")
 
 
 
 router.post("/complete", async (req, res, next) => {
     try {
+        schemaCheck(req.body, lessonCompleteSchema)
         const { languageCode, username, lessonId } = req.body;
         const result = await Lesson.completeLesson(username, languageCode, lessonId)
 
@@ -20,6 +22,7 @@ router.post("/complete", async (req, res, next) => {
 
 router.delete("/complete", async (req, res, next) => {
     try {
+        schemaCheck(req.body, lessonCompleteSchema)
         const { languageCode, username, lessonId } = req.body;
         await Lesson.unCompleteLesson(username, languageCode, lessonId)
         return res.json({ msg: "deleted" })
@@ -74,7 +77,7 @@ router.get("/translate", async (req, res, next) => {
 
             return res.json(values)
         })
-     
+
     } catch (e) {
         return next(e)
     }

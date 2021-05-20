@@ -1,0 +1,53 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "title": "The root schema",
+    "description": "The root schema comprises the entire JSON document.",
+    "default": {},
+    "examples": [
+        {
+            "frontSide": "привет",
+            "backSide": "hi",
+            "deckId": 3
+        }
+    ],
+    "required": [
+        "frontSide",
+        "backSide",
+        "deckId"
+    ],
+    "properties": {
+        "frontSide": {
+            "$id": "#/properties/frontSide",
+            "type": "string",
+            "title": "The frontSide schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "привет"
+            ]
+        },
+        "backSide": {
+            "$id": "#/properties/backSide",
+            "type": "string",
+            "title": "The backSide schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "hi"
+            ]
+        },
+        "deckId": {
+            "$id": "#/properties/deckId",
+            "type": "integer",
+            "title": "The deckId schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": 0,
+            "examples": [
+                3
+            ]
+        }
+    },
+    "additionalProperties": true
+}

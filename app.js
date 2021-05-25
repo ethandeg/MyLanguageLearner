@@ -17,7 +17,7 @@ app.use("/user", userRoutes)
 app.use("/language", languageRoutes)
 app.use("/flashcards", flashCardRoutes)
 app.use("/auth", authRoutes)
-app.get("/", async (req, res, next) => {
+app.get("/translate", async (req, res, next) => {
   const { q, lang } = req.query;
   let call = await translatePhrase(q, lang)
   res.json(call)

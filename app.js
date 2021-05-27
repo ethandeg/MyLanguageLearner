@@ -9,15 +9,20 @@ const languageRoutes = require("./routes/languages")
 const flashCardRoutes = require("./routes/flashCards")
 const authRoutes = require("./routes/auth")
 const db = require("./db");
+const {authenticateJWT, ensureLoggedIn} = require("./middleware/auth")
 app.use(express.json())
 app.use(cors())
+app.use(authenticateJWT)
 
 app.use("/lesson", lessonRoutes)
 app.use("/user", userRoutes)
 app.use("/language", languageRoutes)
 app.use("/flashcards", flashCardRoutes)
 app.use("/auth", authRoutes)
-app.get("/translate", async (req, res, next) => {
+
+
+
+app.get("/translate",ensureLoggedIn, async (req, res, next) => {
   const { q, lang } = req.query;
   let call = await translatePhrase(q, lang)
   res.json(call)

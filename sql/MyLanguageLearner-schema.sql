@@ -2,7 +2,10 @@ Create Table users (
     username VARCHAR(25) PRIMARY KEY,
     password TEXT NOT NULL,
     experience INTEGER CHECK (experience >= 0) DEFAULT 0,
-    profile_pic text
+    profile_pic TEXT,
+    email TEXT
+        CHECK (position('@' IN email) > 1),
+    admin BOOLEAN NOT NULL DEFAULT FALSE
 );
 
 Create Table languages (

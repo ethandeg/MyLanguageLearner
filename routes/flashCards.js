@@ -10,6 +10,7 @@ const flashCardUpdateSchema = require("../schemas/flashCardUpdateSchema.json")
 const flashCardDeleteSchema = require("../schemas/flashCardDeleteSchema.json")
 
 
+
 router.post("/", async (req, res, next) => {
     try {
         schemaCheck(req.body, flashCardCreateSchema)

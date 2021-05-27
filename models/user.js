@@ -12,7 +12,7 @@ class User {
 
 
         const result = await db.query(`
-                SELECT username, experience, profile_pic AS "profilePic" 
+                SELECT username, experience, profile_pic AS "profilePic", email, admin 
                 FROM users WHERE username=$1
             `, [username])
         if (!result.rows.length) throw new BadRequestError
@@ -22,8 +22,6 @@ class User {
        
 
             `, [username])
-
-        console.log(languages)
 
         const deck = await db.query(`
                         SELECT id, name FROM decks WHERE username =$1 
@@ -35,7 +33,7 @@ class User {
 
     static async getAllUsers() {
         const result = await db.query(`
-            SELECT username, experience, profile_pic AS profilePic
+            SELECT username, experience, profile_pic AS profilePic, email, admin 
             FROM users;
         `)
 

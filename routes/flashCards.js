@@ -8,10 +8,11 @@ const deckUpdateSchema = require("../schemas/deckUpdateSchema.json")
 const deckDeleteSchema = require("../schemas/deckDeleteSchema.json")
 const flashCardUpdateSchema = require("../schemas/flashCardUpdateSchema.json")
 const flashCardDeleteSchema = require("../schemas/flashCardDeleteSchema.json")
+const {ensureCorrectUserOrAdmin, ensureLoggedIn} = require("../middleware/auth")
 
 
 
-router.post("/", async (req, res, next) => {
+router.post("/", ensureLoggedIn, async (req, res, next) => {
     try {
         schemaCheck(req.body, flashCardCreateSchema)
         const { frontSide, backSide, deckId } = req.body;
@@ -23,7 +24,7 @@ router.post("/", async (req, res, next) => {
 
 })
 
-router.post("/deck/new", async (req, res, next) => {
+router.post("/deck", ensureCorrectUserOrAdmin, async (req, res, next) => {
     try {
         schemaCheck(req.body, deckCreateSchema)
         const { username, name } = req.body;
@@ -71,8 +72,8 @@ router.get("/deck/:deckId", async (req, res, next) => {
 router.patch("/", async (req, res, next) => {
     try {
         schemaCheck(req.body, flashCardUpdateSchema)
-        const { id, frontSide, backSide } = req.body;
-        const results = await FlashCard.editFlashCard(id, frontSide, backSide)
+        const { deckId, frontSide, backSide } = req.body;
+        const results = await FlashCard.editFlashCard(deckId, frontSide, backSide)
         return res.json(results)
     } catch (e) {
         return next(e)

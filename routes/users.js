@@ -4,6 +4,7 @@ const User = require("../models/user")
 const schemaCheck = require("../helpers/schemaCheck")
 const startLearningSchema = require("../schemas/startLearningSchema.json")
 const earnExperienceSchema = require("../schemas/earnExperienceSchema.json")
+const {ensureCorrectUserOrAdmin} = require("../middleware/auth")
 router.get("/", async (req, res, next) => {
   try {
     const result = await User.getAllUsers()
@@ -14,7 +15,7 @@ router.get("/", async (req, res, next) => {
 
 })
 
-router.post("/language/new", async (req, res, next) => {
+router.post("/language", ensureCorrectUserOrAdmin, async (req, res, next) => {
   try {
     schemaCheck(req.body, startLearningSchema)
     const { username, languageCode } = req.body;
@@ -25,7 +26,7 @@ router.post("/language/new", async (req, res, next) => {
   }
 });
 
-router.delete("/language/remove", async (req, res, next) => {
+router.delete("/language", async (req, res, next) => {
   try {
     schemaCheck(req.body, startLearningSchema)
     const { username, languageCode } = req.body;

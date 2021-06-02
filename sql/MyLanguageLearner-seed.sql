@@ -83,8 +83,11 @@ VALUES
     (13, 'twenty'),(13, 'thirty'),(13, 'fourty'),(13, 'fifty'),(13, 'sixty'),(13, 'seventy'),(13, 'eighty'),(13, 'ninety'),(13, 'one hundred'),
     (14, 'thirty one'), (14, 'fifty six'), (14, 'ninety eight'), (14, 'twenty two'), (14, 'forty eight'), (14, 'eighty seven'), (14, 'twenty one'), (14, 'fifty eight'), (14, 'sixty nine'), (14, 'ninety nine'),
     (15, 'one thousand'), (15, 'one hundred thousand'), (15, 'one million'), (15,'one hundred thousand and forty'), (15, 'one thousand six hundred and thirty'), (15, 'six thousand'), (15, 'six hundred thousand'), (15, 'ninety five thousand four hundred'), (15, 'four thousand'), (15, 'five million'),
-    (16, 'cheeseburger'),(16, 'I would like some fries'),
-    
+    (16, 'cheeseburger'),(16, 'I would like some fries'),(16, 'cucumber'),(16, 'Potato'),(16, 'Ketchup'), (16, 'Mustard'),(16, 'Hamburger'),(16, 'Juice'), (16, 'Water'),
+    (17, 'Candy'), (17, 'Chocolate'), (17, 'Cake'), (17, 'Cheese'), (17, 'Milk'), (17, 'Taco'), (17, 'Mayonaise'), (17, 'Pickle'), (17, 'Juice'), (17, 'Fish')
+    (18, 'Vanilla'), (18, 'Vinegar'), (18, 'Salt'), (18, 'Flour'), (18, 'Baking Soda'), (18, 'Ginger'), (18, 'Pepper'), (18, 'Pastry'), (18, 'Bread'), (18, 'Broccoli'),
+    (19, 'Some more water please'), (19, 'Do you have soda?'), (19, 'Beer'), (19, 'Wine'), (19, 'I''d like some whiskey please'), (19, 'we only have water'), (19, 'I''d like to eat outside please'), (19, 'No, please eat at the table'), (19, 'I''m Hungry!'), (19, 'I am thirsty'),
+    (20, 'Chicken with rice'), (20, 'Would you like to see a menu?'), (20, 'How much is your steak'), (20, 'pork'), (20, 'steak'), (20, 'chicken'), (20, 'Duck'), (20, 'Turkey'), (20, 'A small drink please'), (20, 'What size drink would you like?'),
     (21, 'jacket'),(21, 'red coat'),
     
     (81,'Time Traveling Machine');

@@ -5,6 +5,7 @@ const { createToken } = require("../helpers/tokens")
 const schemaCheck = require("../helpers/schemaCheck")
 const userAuthenticateSchema = require("../schemas/userAuthenticateSchema.json")
 const passwordChangeSchema = require("../schemas/passwordChangeSchema.json")
+const {ensureCorrectUserOrAdmin} = require("../middleware/auth")
 
 
 
@@ -35,7 +36,7 @@ router.post("/register", async (req, res, next) => {
 
 })
 
-router.patch("/", async (req, res, next) => {
+router.patch("/", ensureCorrectUserOrAdmin, async (req, res, next) => {
     try {
         schemaCheck(req.body, passwordChangeSchema)
         const { username, oldPassword, newPassword } = req.body

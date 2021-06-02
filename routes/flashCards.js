@@ -36,7 +36,7 @@ router.post("/deck", ensureCorrectUserOrAdmin, async (req, res, next) => {
 
 })
 
-router.patch("/deck", async (req, res, next) => {
+router.patch("/deck", ensureLoggedIn, async (req, res, next) => {
     try {
         schemaCheck(req.body, deckUpdateSchema)
         const { id, name } = req.body;
@@ -47,7 +47,7 @@ router.patch("/deck", async (req, res, next) => {
     }
 })
 
-router.delete("/deck", async (req, res, next) => {
+router.delete("/deck", ensureLoggedIn, async (req, res, next) => {
     try {
         schemaCheck(req.body, deckDeleteSchema)
         const { id } = req.body;
@@ -69,7 +69,7 @@ router.get("/deck/:deckId", async (req, res, next) => {
     }
 });
 
-router.patch("/", async (req, res, next) => {
+router.patch("/", ensureLoggedIn,async (req, res, next) => {
     try {
         schemaCheck(req.body, flashCardUpdateSchema)
         const { deckId, frontSide, backSide } = req.body;
@@ -81,7 +81,7 @@ router.patch("/", async (req, res, next) => {
 
 })
 
-router.delete("/", async (req, res, next) => {
+router.delete("/", ensureLoggedIn, async (req, res, next) => {
     try {
         schemaCheck(req.body, flashCardDeleteSchema)
         const { id } = req.body

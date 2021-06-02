@@ -119,7 +119,7 @@ class User {
             SET ${setCols}
             WHERE username = ${usernameVarIdx}
             RETURNING 
-            username, profile_pic AS "profilePic", experience`
+            username, profile_pic AS "profilePic", experience, email, admin`
 
 
         const result = await db.query(querySql, [...values, username])

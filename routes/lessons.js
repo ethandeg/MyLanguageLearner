@@ -3,11 +3,12 @@ const router = new express.Router()
 const translatePhrase = require("../MyMemoryAPI")
 const Lesson = require("../models/lesson")
 const schemaCheck = require("../helpers/schemaCheck")
-const lessonCompleteSchema = require("../schemas/lessonCompleteSchema.json")
+const lessonCompleteSchema = require("../schemas/lessonCompleteSchema.json");
+const { ensureCorrectUserOrAdmin } = require("../middleware/auth");
 
 
 
-router.post("/complete", async (req, res, next) => {
+router.post("/complete", ensureCorrectUserOrAdmin, async (req, res, next) => {
     try {
         schemaCheck(req.body, lessonCompleteSchema)
         const { languageCode, username, lessonId } = req.body;
@@ -20,7 +21,7 @@ router.post("/complete", async (req, res, next) => {
 
 })
 
-router.delete("/complete", async (req, res, next) => {
+router.delete("/complete", ensureCorrectUserOrAdmin,async (req, res, next) => {
     try {
         schemaCheck(req.body, lessonCompleteSchema)
         const { languageCode, username, lessonId } = req.body;

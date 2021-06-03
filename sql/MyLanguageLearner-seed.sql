@@ -13,6 +13,14 @@ VALUES
     ('es', 'Spanish', 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Bandera_de_Espa%C3%B1a.svg/1200px-Bandera_de_Espa%C3%B1a.svg.png'),
     ('it', 'Italian', 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Flag_of_Italy_%28Pantone%2C_2003%E2%80%932006%29.svg/220px-Flag_of_Italy_%28Pantone%2C_2003%E2%80%932006%29.svg.png'),
     ('de', 'German', 'https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg'),
+    ('ar', 'Arabic', 'https://upload.wikimedia.org/wikipedia/commons/b/bb/Arabic-Language-Flag.svg'),
+    ('zh', 'Chinese', 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Flag_of_the_Customs_of_the_People%27s_Republic_of_China.svg/220px-Flag_of_the_Customs_of_the_People%27s_Republic_of_China.svg.png'),
+    ('nl', 'Dutch', 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Flag_of_the_Netherlands.svg/255px-Flag_of_the_Netherlands.svg.png'),
+    ('ko','Korean','https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/255px-Flag_of_South_Korea.svg.png'),
+    ('fa','Persian','https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Flag_of_Iran.svg/255px-Flag_of_Iran.svg.png'),
+    ('pl', 'Polish', 'https://upload.wikimedia.org/wikipedia/en/1/12/Flag_of_Poland.svg'),
+    ('pt', 'Portuguese', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_Portugal.svg/255px-Flag_of_Portugal.svg.png'),
+    ('vi', 'Viatnamese', 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Vietnam.svg/900px-Flag_of_Vietnam.svg.png'),
     ('fr', 'French', 'https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/1200px-Flag_of_France.svg.png');
 
 INSERT INTO user_language

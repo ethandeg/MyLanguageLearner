@@ -61,9 +61,9 @@ VALUES
     (11, 3),(12, 3),(13, 3),(14, 3),(15, 3),
     (16, 4),(17, 4),(18, 4),(19, 4),(20, 4),
     (21, 5),(22, 5),(23, 5),(24, 5),(25, 5),
-    (26, 6),(27, 6),(28, 6),(29, 6),(30, 6);
-    -- (31, 7),(32, 7),(33, 7),(34, 7),(35, 7),
-    -- (36, 8),(37, 8),(38, 8),(39, 8),(40, 8),
+    (26, 6),(27, 6),(28, 6),(29, 6),(30, 6),
+    (31, 7),(32, 7),(33, 7),(34, 7),(35, 7),
+    (36, 8),(37, 8),(38, 8),(39, 8),(40, 8);
     -- (41, 9),(42, 9),(43, 9),(44, 9),(45, 9),
     -- (46, 10),(47, 10),(48, 10),(49, 10),(51, 10),
     -- (52, 11),(53, 11),(54, 11),(55, 11),(56, 11),
@@ -105,7 +105,18 @@ VALUES
     (27, 'There is a wolf'), (27, 'I am scared of bears'), (27, 'Do you like bears?'), (27, 'You are petting the cat'), (27, 'The cat does not like you'), (27, 'The dog likes you very much'),
     (28, 'A bear den'), (28, 'A pack of wolves'), (28, 'I love dogs'), (28, 'I think pigs are cute'), (28, 'Do you have any pets'), (28, 'Pets'),
     (29,'Two flies'), (29, 'There are a lot of flies here'), (29, 'I don''t like bugs'), (29, 'Spider'), (29, 'Why is there a spider here'), (29,'No dogs allowed'), (29, 'Only cats allowed'),
-    (30, 'No pets here'), (30, 'Pets are allowed'), (30, 'Beware of dog'), (30, 'Beware of Bears'), (30, 'Never pet a wild animal'), (30, 'Fox'), (30, 'Owl'), (30, 'Bird');
+    (30, 'No pets here'), (30, 'Pets are allowed'), (30, 'Beware of dog'), (30, 'Beware of Bears'), (30, 'Never pet a wild animal'), (30, 'Fox'), (30, 'Owl'), (30, 'Bird'),
+    (31, 'Doctor'), (31, 'Nurse'), (31, 'Ambulance'), (31,'Patient'), (31,'Medicine'), (31,'Pills'), (31, 'Get some rest'), (31, 'Take your medicine'),
+    (32, 'I need a Doctor'), (32, 'I take medicine'), (32, 'Are you sick?'), (32, 'I am sick'), (32, 'Where is the nearest hospital'), (32,'Please take me to the hospital'), (32,'the boy takes medicine'), (32, 'Where is the doctor'), (32, 'Where is the nurse'),
+    (33, 'Emergancy Room'), (33, 'Urgent care'),(33, 'Is your stomach okay?'), (33, 'My arm hurts'), (33, 'I have a headache'), (33, 'Jamie has a Fever'), (33, 'Cancer'), (33, 'The flu'), (33, 'Toothache'),
+    (34,'The ambulance will be here soon'), (34, 'Where does it hurt'), (34, 'I don''t think you''re really sick'), (34, 'You must be really sick!'), (34, 'I am very sick!'), (34,'Bronchitis'), (34,'Illness'), (34, 'To be in pain'),
+    (35, 'Are you a doctor?'), (35, 'Is there a doctor here'), (35, 'Are you a nurse?'), (35, 'I need a doctor please'), (35, 'Will a doctor help'), (35,'I am going to the hospital'), (35, 'The hospital is far away'), (35,'The hospital is close'), (35,'When will we get to the hospital?'), (35,'Surgery'),
+    (36,'Mom'), (36,'Dad'),(36,'Uncle'),(36,'Aunt'),(36, 'Parents'),(36,'Grandparents'),(36,'Grandfather'),(36,'Grandmother'),(36,'Cousin'),(36,'Friend'),
+    (37,'Son'),(37,'Daughter'),(37,'Twins'),(37,'Girlfriend'),(37,'Boyfriend'),(37,'Husband'),(37,'Wife'),(37,'Stranger'),(37,'I''m married'),(37,'Do you have a son?'),
+    (38,'I want a daughter'), (38,'How is your uncle?'),(38,'I have never met your mom'), (38, 'You''re dad seems nice'), (38,'How is your friend'), (38, 'Is Jeremy your friend'), (39,'Where did you meet your wife?'), (38,'What do you think of Tim?'), (38,'Vera is very beautiful'),
+    (39, 'Hello Ivan, where is your dad?'), (39,'My friend is a businessman'),(39, 'Mom has a sister'), (39, 'Is my aunt my mother''s sister?'), (39, 'Does your dad have a sister?'), (39,'My brother does not drink water'), (39,'My dad likes beer'), (39,'Your mom likes wine'),
+    (40, 'Vera, is this your grandfather'), (40, 'Your grandmother is kind'), (40,'Ivan''s uncle is smart'), (40, 'Smart aunt'), (40,'Strong son'), (40,'Weak daughter'), (40,'Does your brother like the beach?'), (40,'Where is your uncle'), (40,'How old is your grandfather'), (40,'Do you have an aunt?');
+
     
     -- (81,'Time Traveling Machine');
 

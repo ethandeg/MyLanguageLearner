@@ -13,3 +13,9 @@
 #### Can learn more than 10 languages (more coming soon...)
 
 #### The server flow works so that a user's requests are authenticated, authorized and sent back with either the requested information or messaging.
+
+
+### Stack
+* Node.js
+* Express
+* PostGreSQL

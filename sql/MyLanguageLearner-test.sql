@@ -1,5 +1,5 @@
-DROP DATABASE IF EXISTS "MyLanguageLearner";
-CREATE DATABASE "MyLanguageLearner";
+DROP DATABASE IF EXISTS "MyLanguageLearner_test";
+CREATE DATABASE "MyLanguageLearner_test";
 
 \c "MyLanguageLearner_test";
 

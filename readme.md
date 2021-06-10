@@ -28,8 +28,9 @@ To install, and get the app working, just:
 
 
 ### tests
-To run tests, all you need to do is from the root directory, type jest -i. 
-You need Jest downloaded on your computer, and supertest is one of the dev file dependencies
+* Make sure jest is downloaded to your system, if not type npm install -g jest
+* cd into the sql folder and run the MyLanguageLearner-test.sql
+* jest -i
 
 
 

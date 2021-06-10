@@ -16,6 +16,8 @@
 
 #### The server flow works so that a user's requests are authenticated, authorized and sent back with either the requested information or messaging.
 
+#### We use the API to translate words/phrases, this allows for easy language learning. The user can do lessons of our pre made material, while making new flashcards and flashcard decks throughout the process painlessly.
+
 ### Installation
 To install, and get the app working, just:
 * clone the backend repository

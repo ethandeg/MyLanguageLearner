@@ -4,9 +4,12 @@ const db = require("../db.js");
 const User = require("../models/user");
 const Language = require("../models/language");
 const Lesson = require("../models/lesson")
+const FlashCard = require("../models/flashCard")
 const { createToken } = require("../helpers/tokens");
 
 const lessonIds = []
+const deckIds = []
+const flashCardIds = []
 async function commonBeforeAll() {
   // noinspection SqlWithoutWhere
   await db.query("DELETE FROM users");
@@ -62,7 +65,10 @@ async function commonBeforeAll() {
 
   const les = await Lesson.createLesson(sub.id, 'testlesson')
   lessonIds.push(les.id)
-
+  const deck = await FlashCard.createDeck("u1", "u1's deck")
+  deckIds.push(deck.id)
+  const flashCard = await FlashCard.createFlashCard(deckIds[0], "test card front", "test card back")
+  flashCardIds.push(flashCard.id)
  
 }
 
@@ -92,5 +98,7 @@ module.exports = {
   u1Token,
   u2Token,
   adminToken,
-  lessonIds
+  lessonIds,
+  flashCardIds,
+  deckIds
 };

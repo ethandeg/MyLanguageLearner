@@ -13,6 +13,8 @@ const {
   u1Token,
   u2Token,
   adminToken,
+  deckIds,
+  flashCardIds,
 } = require("./_testCommon");
 
 beforeAll(commonBeforeAll);
@@ -59,11 +61,11 @@ describe("GET /user", function () {
 describe("GET /user/:username", function () {
   test("works for admin", async function () {
     const resp = await request(app)
-        .get(`/user/u1`)
+        .get(`/user/u2`)
         .set("authorization", adminToken);
     expect(resp.body).toEqual({
      
-        username: "u1",
+        username: "u2",
         admin: false,
         email: null,
         experience: 0,
@@ -76,11 +78,11 @@ describe("GET /user/:username", function () {
 
   test("works for same user", async function () {
     const resp = await request(app)
-        .get(`/user/u1`)
-        .set("authorization", u1Token);
+        .get(`/user/u2`)
+        .set("authorization", u2Token);
     expect(resp.body).toEqual({
 
-        username: "u1",
+        username: "u2",
         admin: false,
         email: null,
         experience: 0,

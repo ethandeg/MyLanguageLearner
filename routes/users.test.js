@@ -3,14 +3,13 @@
 const request = require("supertest");
 
 const app = require("../app");
-const User = require("../models/user");
+
 
 const {
   commonBeforeAll,
   commonBeforeEach,
   commonAfterEach,
   commonAfterAll,
-  testJobIds,
   u1Token,
   u2Token,
   adminToken,
@@ -26,7 +25,6 @@ afterAll(commonAfterAll);
 
 describe("GET /user", function () {
   test("works for admins", async function () {
-      console.log(adminToken)
     const resp = await request(app)
         .get("/user")
         .set("authorization", adminToken);

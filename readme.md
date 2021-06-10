@@ -1,5 +1,7 @@
 # MyLanguageLearner Backend
 
+# To see running app, go to http://mylanguagelearner.surge.sh
+
 ## API - My Memory Api - https://api.mymemory.translated.net
 
 ## Server Deployed - https://mylanguagelearner-backend.herokuapp.com
@@ -13,6 +15,21 @@
 #### Can learn more than 10 languages (more coming soon...)
 
 #### The server flow works so that a user's requests are authenticated, authorized and sent back with either the requested information or messaging.
+
+### Installation
+To install, and get the app working, just:
+* clone the backend repository
+* go to the root directory and then type npm install
+* run the sql file in the ./sql folder called MyLanguageLearner.sql
+* node server.js or nodemon server.js
+* Then follow the steps on the readme for our frontend at - https://github.com/ethandeg/MyLanguageLearner-frontend
+
+
+### tests
+To run tests, all you need to do is from the root directory, type jest -i. 
+You need Jest downloaded on your computer, and supertest is one of the dev file dependencies
+
+
 
 
 ### Stack

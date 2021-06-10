@@ -4,9 +4,9 @@ const User = require("../models/user")
 const schemaCheck = require("../helpers/schemaCheck")
 const startLearningSchema = require("../schemas/startLearningSchema.json")
 const earnExperienceSchema = require("../schemas/earnExperienceSchema.json")
-const {ensureCorrectUserOrAdmin} = require("../middleware/auth")
+const {ensureAdmin, ensureCorrectUserOrAdmin} = require("../middleware/auth")
 
-router.get("/", async (req, res, next) => {
+router.get("/", ensureAdmin, async (req, res, next) => {
   try {
     const result = await User.getAllUsers()
     return res.json(result)

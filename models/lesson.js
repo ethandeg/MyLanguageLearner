@@ -6,7 +6,21 @@ class Lesson {
         this.subUnitNumber = subUnitNumber;
         this.material = material;
     }
+    static async createUnit(number, name) {
+        const result = await db.query(`INSERT INTO units (unit_number, unit_name) VALUES ($1, $2) RETURNING *`, [number, name])
+        return result.rows[0]
+    }
 
+    static async createSubUnit(number, unitNumber) {
+
+        const result = await db.query(`INSERT INTO subunits (number, unit_number) VALUES ($1, $2) RETURNING *`, [number, unitNumber])
+        return result.rows[0]
+    }
+
+    static async createLesson(subUnitNumber, material){
+        const result = await db.query(`INSERT INTO lessons (subunit_number, material) VALUES ($1, $2) RETURNING *`, [subUnitNumber, material])
+        return result.rows[0]
+    }
     static async getLessonsFromSubUnit(subNum){
         const lessons = await db.query(`SELECT * FROM lessons WHERE subunit_number = $1`,[subNum])
         const result = lessons.rows.map(lesson => new Lesson(lesson.id, lesson.subunit_number, lesson.material))

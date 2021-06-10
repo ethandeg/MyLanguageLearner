@@ -11,7 +11,6 @@ class FlashCard {
         const results = await db.query(
             `INSERT INTO decks (username, name) VALUES ($1, $2) RETURNING username,name, id`, [username, name]
         )
-        console.log(results)
         return results.rows[0]
     }
 

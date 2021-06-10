@@ -15,7 +15,7 @@ class User {
                 SELECT username, experience, profile_pic AS "profilePic", email, admin 
                 FROM users WHERE username=$1
             `, [username])
-        if (!result.rows.length) throw new BadRequestError
+        if (!result.rows.length) throw new NotFoundError
         const languages = await db.query(`
         SELECT language_code AS "languageCode", name FROM user_language JOIN languages
         ON user_language.language_code = languages.code WHERE username=$1;

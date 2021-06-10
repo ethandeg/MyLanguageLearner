@@ -21,6 +21,17 @@ router.post("/complete", ensureCorrectUserOrAdmin, async (req, res, next) => {
 
 })
 
+// router.post('/test', async(req,res,next) => {
+//     try{
+//         const {number, unitNumber} = req.body
+//         const result = await Lesson.createSubUnit(number, unitNumber)
+//         return res.json(result)
+//     } catch(e){
+//         return next(e)
+//     }
+
+// })
+
 router.delete("/complete", ensureCorrectUserOrAdmin,async (req, res, next) => {
     try {
         schemaCheck(req.body, lessonCompleteSchema)
@@ -65,16 +76,12 @@ router.get("/translate", async (req, res, next) => {
         const promises = []
         for (row of material) {
             const contents = translatePhrase(row.material, languageCode)
-            //promise.all => array of promises
-            //push each promise from api call to an array
+
             promises.push(contents)
         }
-        //call promise.all to the promises array
+
         Promise.all(promises).then(values => {
-            // const response = values.map((val,i ) => {
-            //     return {segment: val[i].segment, translation: val[i].translation}
-            // })
-            // console.log(response)
+
 
             return res.json(values)
         })

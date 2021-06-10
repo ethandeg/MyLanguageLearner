@@ -3,9 +3,10 @@
 const db = require("../db.js");
 const User = require("../models/user");
 const Language = require("../models/language");
+const Lesson = require("../models/lesson")
 const { createToken } = require("../helpers/tokens");
 
-
+const lessonIds = []
 async function commonBeforeAll() {
   // noinspection SqlWithoutWhere
   await db.query("DELETE FROM users");
@@ -50,6 +51,18 @@ async function commonBeforeAll() {
      "password3"
   );
 
+  // await User.newLearner('u1', 'es')
+  
+  const unit = await Lesson.createUnit(1, 'testunit')
+
+
+  const sub = await Lesson.createSubUnit(1, unit.id)
+
+  
+
+  const les = await Lesson.createLesson(sub.id, 'testlesson')
+  lessonIds.push(les.id)
+
  
 }
 
@@ -79,4 +92,5 @@ module.exports = {
   u1Token,
   u2Token,
   adminToken,
+  lessonIds
 };

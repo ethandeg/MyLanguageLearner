@@ -47,6 +47,7 @@ describe("POST /auth/register", function () {
 describe("POST /auth/login", function () {
     test("can login", async function() {
         const resp = await request(app)
+
         .post(`/auth/login`)
         .send({username: "u1", password: "password1"})
         expect(resp.statusCode).toEqual(200)
